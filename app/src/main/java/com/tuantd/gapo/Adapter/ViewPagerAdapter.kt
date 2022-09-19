@@ -1,16 +1,15 @@
 package com.tuantd.gapo.Adapter
 
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentActivity
 import androidx.fragment.app.FragmentManager
 import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.tuantd.gapo.Fragment.*
 
-class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle):
-    FragmentStateAdapter(fragmentManager, lifecycle) {
-    override fun getItemCount(): Int {
-        return 6
-    }
+class ViewPagerAdapter(activity: FragmentActivity, private val tabCount: Int):
+    FragmentStateAdapter(activity) {
+    override fun getItemCount(): Int = tabCount
 
     override fun createFragment(position: Int): Fragment {
         return   when(position){
@@ -33,7 +32,7 @@ class ViewPagerAdapter(fragmentManager: FragmentManager, lifecycle: Lifecycle):
                 ProfileFragment()
             }
             else->{
-                Fragment()
+                HomeFragment()
             }
 
         }
